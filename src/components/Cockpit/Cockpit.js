@@ -1,8 +1,22 @@
-import React from "react";
+// useEffect is a react hook -> combines use case of all class based lifecycle hook in one React hook.
+import React, { useEffect } from "react";
 import classes from "./Cockpit.css";
 
 const cockpit = (props) => {
   // Array of string to string. We need to convert array to string to className.
+
+  // Execute every render cycle of cockpit.
+  useEffect(() => {
+    console.log("Cokcpit.js: UseEffect");
+    // Can send HTTP request here.
+
+    //Lets execute only when persons change.
+    setTimeout(() => {
+      alert("Saved data to the cloud");
+    }, 1000);
+  }, []); // If there no change update and we want to only load it
+  // once at boot time.THis is like component did mount.
+  //}, [props.persons]); // change only when persons change. We can have multiple copies.
 
   const assignedClasses = [];
   let btnClass = "";

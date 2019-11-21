@@ -4,21 +4,6 @@ import classes from "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
-// const button = Styled.button`
-//   background-color: ${(props) => (props.toggle ? "red" : "green")};
-//   color: white;
-//   font: inherit;
-//   border: 1px solid blue;
-//   padding: 8px;
-//   cursor: pointer;
-
-//   &:hover {
-//         background-color: ${(props) =>
-//           props.toggle ? "salmon" : "lightgreen"};
-//         color: black;
-//       }
-// `;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +32,17 @@ class App extends Component {
 
   componentDidMount() {
     console.log("Component did mount");
+  }
+
+  // state changes.
+  componentDidUpdate() {
+    console.log("App.js: Component did update.");
+  }
+
+  // Performace improvement to check if update is really required.
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("App.js: Should Component update");
+    return true;
   }
 
   // person is reference/poiter to original state,
