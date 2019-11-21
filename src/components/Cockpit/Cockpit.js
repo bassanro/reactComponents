@@ -14,9 +14,21 @@ const cockpit = (props) => {
     setTimeout(() => {
       alert("Saved data to the cloud");
     }, 1000);
+    return () => {
+      console.log("Cockpit.js : Cleanup work in userEffect");
+    };
   }, []); // If there no change update and we want to only load it
   // once at boot time.THis is like component did mount.
   //}, [props.persons]); // change only when persons change. We can have multiple copies.
+
+  useEffect(() => {
+    console.log("Cockpit.js : 2nd UseEffect");
+    return () => {
+      // This will run for every update cycle.
+      // Some opearations that should be cancelled whenever the component renders.
+      console.log("Cockpit.js : cleanup work in useEffect");
+    };
+  });
 
   const assignedClasses = [];
   let btnClass = "";

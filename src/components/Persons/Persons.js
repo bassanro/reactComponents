@@ -13,20 +13,31 @@ class Persons extends Component {
   //   return state;
   // }
 
+  // componentWillReceiveProps(props) {
+  //   console.log("Perons.js: componentWillReceiveProps", props);
+  // }
+
   shouldComponentUpdate(nextProps, nextState) {
     console.log("Persons.js: shouldComponentUpdate");
     // Return true if React should continue updating.
     return true;
   }
 
+  //Save the snapshot before changes and can be used later.
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log("Persons.js: getSnapshotBeforeUpdate");
     return { message: "Snapshot!" };
   }
 
+  // Use the snapshot saved above. 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log("Persons.js: Components did update");
     console.log(snapshot);
+  }
+
+  // We can do all cleanup activity.
+  componentWillUnmount() { 
+    console.log("Persons.js: componentWillUnmount");
   }
 
   render() {
