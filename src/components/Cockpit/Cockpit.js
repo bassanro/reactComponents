@@ -5,7 +5,7 @@ import classes from "./Cockpit.css";
 const cockpit = (props) => {
   // Array of string to string. We need to convert array to string to className.
 
-  // Execute every render cycle of cockpit.
+  // Execute every render cycle of cockpit. Like componentDidMount
   useEffect(() => {
     console.log("Cokcpit.js: UseEffect");
     // Can send HTTP request here.
@@ -19,14 +19,16 @@ const cockpit = (props) => {
     };
   }, []); // If there no change update and we want to only load it
   // once at boot time.THis is like component did mount.
-  //}, [props.persons]); // change only when persons change. We can have multiple copies.
+  //}, [props.persons]); // change only when persons change. We can have multiple copies of useEffect()
 
+  // componentDidMount, componentDidUpdate and componentWillUnmount
+  // Run for every update cycle.
   useEffect(() => {
     console.log("Cockpit.js : 2nd UseEffect");
     return () => {
       // This will run for every update cycle.
-      // Some opearations that should be cancelled whenever the component renders.
-      console.log("Cockpit.js : cleanup work in useEffect");
+      // Some opearations that should be cancelled whenever the component re-renders.
+      console.log("Cockpit.js : cleanup work in 2useEffect");
     };
   });
 

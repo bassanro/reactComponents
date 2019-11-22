@@ -20,7 +20,13 @@ class Persons extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     console.log("Persons.js: shouldComponentUpdate");
     // Return true if React should continue updating.
-    return true;
+
+    // Since persons component didn't change we should not re-render here.
+    // This is great performance optimization.
+    // We are comparing pointers since array are pointers.
+    if (nextProps.persons !== this.props.persons) {
+      return true;
+    } else return false;
   }
 
   //Save the snapshot before changes and can be used later.
@@ -29,14 +35,14 @@ class Persons extends Component {
     return { message: "Snapshot!" };
   }
 
-  // Use the snapshot saved above. 
+  // Use the snapshot saved above.
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log("Persons.js: Components did update");
     console.log(snapshot);
   }
 
   // We can do all cleanup activity.
-  componentWillUnmount() { 
+  componentWillUnmount() {
     console.log("Persons.js: componentWillUnmount");
   }
 
