@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import classes from "./Person.css";
 import Aux from "../../../hoc/Auxillary";
@@ -23,5 +24,17 @@ class Person extends Component {
     );
   }
 }
+
+// Can work for class and functional component.
+// In build enviornment, the prop name types are checked.
+// These are strippd out in prod enviornment.
+Person.propTypes = {
+  // Click expects a function.
+  click: PropTypes.func,
+  // name is a string
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func
+};
 
 export default withclass(Person, classes.Person);
