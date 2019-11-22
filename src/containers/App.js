@@ -19,7 +19,8 @@ class App extends Component {
       ],
       otherState: "some other value",
       showPersons: false,
-      showCockpit: true
+      showCockpit: true,
+      changeCounter: 0
     };
   }
 
@@ -59,6 +60,9 @@ class App extends Component {
     this.setState({ persons: updatedPersons });
   };
 
+  // SetState is not guarenteed to finish immediately.
+  // For large applications it might be older state, like changeCounter.
+  // Hence depended on old state. See prevState
   nameChangeHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;
@@ -72,7 +76,13 @@ class App extends Component {
     const newPersons = [...this.state.persons];
     newPersons[personIndex] = updatedPerson;
 
-    this.setState({ persons: newPersons });
+    this.setState((prevState, props) => {
+      return {
+        persons: newPersons,
+        //changeCounter: this.state.changeCounter + 1
+        changeCounter: prevState.changeCounter + 1
+      };
+    });
   };
 
   togglePersonsHandle = (event) => {

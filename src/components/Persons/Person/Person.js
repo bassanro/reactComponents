@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import withclass from "../../../hoc/withClass";
 
 import classes from "./Person.css";
 import Aux from "../../../hoc/Auxillary";
+import withclass from "../../../hoc/withClass";
 
 class Person extends Component {
   render() {
