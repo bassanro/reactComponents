@@ -1,10 +1,17 @@
 // useEffect is a react hook -> combines use case of all class based lifecycle hook in one React hook.
-import React, { useEffect } from "react";
+// useRef is a React hook.
+import React, { useEffect, useRef } from "react";
 import classes from "./Cockpit.css";
 
 const cockpit = (props) => {
-  // Array of string to string. We need to convert array to string to className.
+  const toggleBtnRef = useRef(null);
 
+  useEffect(() => {
+    console.log("Ready for click");
+    toggleBtnRef.current.click();
+  }, []);
+
+  // Array of string to string. We need to convert array to string to className.
   // Execute every render cycle of cockpit. Like componentDidMount
   useEffect(() => {
     console.log("Cokcpit.js: UseEffect");
@@ -49,7 +56,7 @@ const cockpit = (props) => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(" ")}>This is really working!</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
     </div>

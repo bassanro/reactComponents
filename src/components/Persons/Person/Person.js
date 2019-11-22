@@ -12,10 +12,6 @@ class Person extends Component {
     this.inputElementRef = React.createRef();
   }
 
-  // inputElement is property of this class.
-  // ref={(inputEl) => {
-  //   this.inputElement = inputEl;
-  // }}
   componentDidMount() {
     this.inputElementRef.current.focus();
   }

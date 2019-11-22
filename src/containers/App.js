@@ -29,12 +29,6 @@ class App extends Component {
     return state;
   }
 
-  // componentWillMount() {
-  //  https://fb.me/react-unsafe-component-lifecycles
-  //   //Prepare your state correctly.
-  //   console.log("App.js: Component will mount");
-  // }
-
   componentDidMount() {
     console.log("Component did mount");
   }
