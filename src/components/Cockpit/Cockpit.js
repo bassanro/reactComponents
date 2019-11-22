@@ -12,7 +12,7 @@ const cockpit = (props) => {
 
     //Lets execute only when persons change.
     setTimeout(() => {
-      alert("Saved data to the cloud");
+      //alert("Saved data to the cloud");
     }, 1000);
     return () => {
       console.log("Cockpit.js : Cleanup work in userEffect");
