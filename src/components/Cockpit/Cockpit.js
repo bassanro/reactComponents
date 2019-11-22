@@ -57,4 +57,5 @@ const cockpit = (props) => {
 };
 
 // memo - store the snapshot and will only re render if component changes
+// this is same as shouldComponentUpdate in class Component
 export default React.memo(cockpit);

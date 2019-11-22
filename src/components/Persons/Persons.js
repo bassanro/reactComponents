@@ -1,5 +1,5 @@
 // functional component
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Person from "./Person/Person";
 
 // Functional components don't have state and are not inhertited form Components.
@@ -7,7 +7,7 @@ import Person from "./Person/Person";
 
 // Presentational/class based components have state and are inherited from Components.
 
-class Persons extends Component {
+class Persons extends PureComponent {
   // static getDerivedStateFromProps(pros, state) {
   //   console.log("Persons.js: getDerivedStateFromProps ");
   //   return state;
@@ -17,17 +17,22 @@ class Persons extends Component {
   //   console.log("Perons.js: componentWillReceiveProps", props);
   // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("Persons.js: shouldComponentUpdate");
-    // Return true if React should continue updating.
+  // This is taken by the PureComponent update.
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("Persons.js: shouldComponentUpdate");
+  //   // Return true if React should continue updating.
 
-    // Since persons component didn't change we should not re-render here.
-    // This is great performance optimization.
-    // We are comparing pointers since array are pointers.
-    if (nextProps.persons !== this.props.persons) {
-      return true;
-    } else return false;
-  }
+  //   // Since persons component didn't change we should not re-render here.
+  //   // This is great performance optimization.
+  //   // We are comparing pointers since array are pointers.
+  //   if (
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.clicked !== this.props.clicked
+  //   ) {
+  //     return true;
+  //   } else return false;
+  // }
 
   //Save the snapshot before changes and can be used later.
   getSnapshotBeforeUpdate(prevProps, prevState) {
